@@ -1,0 +1,25 @@
+.list {
+  margin-top: 32px;
+}
+
+.item {
+  font-size: 16px;
+}
+
+.item:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.button {
+  cursor: pointer;
+  margin-left: 24px;
+  padding: 2px 16px;
+  font-size: 14px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.button:hover {
+  outline: 1px solid #000;
+}
