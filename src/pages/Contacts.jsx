@@ -2,7 +2,7 @@ import { ContactForm } from 'components/ContactForm/ContactForm'
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { selectFilteredContacts } from 'redux/selectors';
-import css from './App.module.css'
+import css from '../components/App.module.css'
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 

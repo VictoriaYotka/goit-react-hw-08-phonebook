@@ -1,15 +1,16 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "redux/operations";
+// import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchContacts } from "redux/operations";
 // import css from './App.module.css'
-import { selectToken } from "redux/selectors";
+// import { selectToken } from "redux/selectors";
 import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
+import Login from "pages/Login";
 
-const Login = lazy(() => import("../pages/Login"));
+// const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
 const Contacts = lazy(() => import("../pages/Contacts"));
 
@@ -23,17 +24,23 @@ export function App () {
 
   return (
     <Routes>
-      <PublicRoute>
-        <Route path="/login" element={<Login/>} />
+      <Route path="/" element={
+        <PublicRoute>
+          <Login/>
       </PublicRoute>
+      } />
       
-      <PublicRoute>
-        <Route path="/register" element={<Register/>} />
+      <Route path="/register" element={
+        <PublicRoute>
+          <Register/>
       </PublicRoute>
+      } />
 
-      <PrivateRoute>
-        <Route path="/contacts" element={<Contacts/>} />
+      <Route path="/contacts" element={
+        <PrivateRoute>
+          <Contacts/>
       </PrivateRoute>
+      } />
     </Routes>
 
 
