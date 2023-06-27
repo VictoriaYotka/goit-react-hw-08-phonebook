@@ -10,22 +10,6 @@ const initialState = {
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
-    //     addContact(state, {payload}) {
-    //         return {...state, items: [...state.items,  {
-    //                 ...payload,
-    //                 id: nanoid(),
-    //             }]}
-    //         // items.push({
-    //         //     ...payload,
-    //         //     id: nanoid(),
-    //         // })
-    //     },
-
-    //    removeContact(state, {payload}) {
-    //     return {...state, items: state.items.filter(contact => contact.id !== payload)
-    //     }}
-    //         // return items.filter(contact => contact.id !== payload)
-    //     },
     extraReducers: (builder) => {
         builder
       .addCase(fetchContacts.fulfilled, (state, {payload}) => {
