@@ -1,18 +1,22 @@
 import { useDispatch } from 'react-redux'
 import { fetchSignup } from 'redux/fetchUser';
 
-const Register = () => {
+const RegisterForm = () => {
 const dispatch = useDispatch();
 
 const handleSubmit = (event) => {
     event.preventDefault();
+
     const form = event.target;
     const name = form.elements.user_name.value;
     const email = form.elements.email.value;
     const password = form.elements.password.value;
+
     const userRegisterInfo = {name, email, password};
-    dispatch(fetchSignup(userRegisterInfo))
-    // form.reset()
+    
+    dispatch(fetchSignup(userRegisterInfo));
+
+    form.reset()
 }
 
 return (
@@ -46,4 +50,4 @@ return (
   )
 }
 
-export default Register
+export default RegisterForm
