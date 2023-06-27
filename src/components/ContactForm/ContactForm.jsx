@@ -19,7 +19,7 @@ export function ContactForm() {
     if(contacts.find(({name}) => name === newName)) {
         toast.info(`${newName} is already in contacts`);
     } else {dispatch(addContact({name: newName,
-      phone: newPhone})).unwrap()
+      number: newPhone})).unwrap()
       .then(() => 
       toast.success(`${newName} successfully added!`))
       .catch(() => 

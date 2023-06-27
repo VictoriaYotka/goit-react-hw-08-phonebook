@@ -9,7 +9,7 @@ export const fetchSignup = createAsyncThunk('user/createUser',
 async(userRegisterInfo, thunkAPI) => {
     try {
       const response = await userInstance.post("/signup", userRegisterInfo);
-      console.log(userRegisterInfo)
+      localStorage.setItem('token', JSON.stringify(response.data.token))
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
