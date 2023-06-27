@@ -8,9 +8,9 @@ import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
-import Login from "pages/Login";
+import SharedLayout from "pages/SharedLayout";
 
-// const Login = lazy(() => import("../pages/Login"));
+const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
 const Contacts = lazy(() => import("../pages/Contacts"));
 
@@ -24,7 +24,9 @@ export function App () {
 
   return (
     <Routes>
-      <Route path="/" element={
+      <Route path="/" element={<SharedLayout/>}/>
+      
+      <Route path="/login" element={
         <PublicRoute>
           <Login/>
       </PublicRoute>
