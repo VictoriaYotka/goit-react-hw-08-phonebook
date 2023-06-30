@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import css from './ContactList.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { fetchContacts } from 'redux/fetchContacts';
 import { deleteContact } from 'redux/operations';
 import { selectError, selectFilteredContacts, selectIsLoading,  } from 'redux/selectors';
 
@@ -9,6 +11,11 @@ export function ContactList() {
     const filteredContacts = useSelector(selectFilteredContacts);
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
+
+    useEffect(() => {
+      dispatch(fetchContacts())    
+    }, [dispatch])
+    
 
     const handleDeleteButton = (id, name) => {
         dispatch(deleteContact(id)).unwrap()

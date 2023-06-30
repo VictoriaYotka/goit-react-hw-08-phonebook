@@ -1,9 +1,12 @@
 import FormInput from 'components/FormInput/FormInput';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { fetchSignup } from 'redux/fetchUser';
 
 const Register = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,7 +18,12 @@ const handleSubmit = (event) => {
 
     const userRegisterInfo = {name, email, password};
     
-    dispatch(fetchSignup(userRegisterInfo));
+    dispatch(fetchSignup(userRegisterInfo)).unwrap()
+    .then(() => {
+        navigate('/')
+        toast.success('Successfully registered. Please, log in')
+    })
+    .catch(() => toast.error(`Something went wrong, try again `))
 
     form.reset()
 }
@@ -25,14 +33,17 @@ const handleSubmit = (event) => {
         <FormInput 
             type='text'
             name='user_name'
+            label='Name'
         />
         <FormInput 
             type='email'
             name='email'
+            label='Email'
         />
         <FormInput 
             type='password'
             name='password'
+            label='Password'
         />
         <button type="submit">Register</button>
     </form>

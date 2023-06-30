@@ -1,16 +1,43 @@
 import FormInput from 'components/FormInput/FormInput'
-import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { fetchLogin } from 'redux/fetchUser';
 
 const Login = () => {
+const dispatch = useDispatch();
+const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const email = form.elements.email.value;
+    const password = form.elements.password.value;
+
+    const userLoginInfo = {email, password};
+    
+    dispatch(fetchLogin(userLoginInfo)).unwrap()
+    .then(() => {
+      navigate('/contacts')
+      toast.success('Welcome!')
+    })
+    .catch(() => toast.error(`Something went wrong, try again `))
+
+    form.reset()
+}
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <FormInput 
             type='email'
             name='email'
+            label='Email'
         />
         <FormInput 
             type='password'
             name='password'
+            label='Password'
         />
         <button type="submit">Log In</button>
     </form>

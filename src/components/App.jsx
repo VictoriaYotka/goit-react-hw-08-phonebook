@@ -5,12 +5,17 @@ import { lazy } from "react";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import SharedLayout from "pages/SharedLayout";
+import { useSelector } from "react-redux";
 
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
 const Contacts = lazy(() => import("../pages/Contacts"));
 
 export function App () {
+  const token = useSelector(state => state.user.token);
+  console.log(token)
+
+  
   return (
     <>
      <ToastContainer 

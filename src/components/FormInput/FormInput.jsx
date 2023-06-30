@@ -1,9 +1,9 @@
 import React from 'react'
 
-const FormInput = (type, name) => {
+const FormInput = ({type, name, label}) => {
   return (
     <>
-    <label htmlFor={name} >Name</label>
+    <label htmlFor={name} >{label}</label>
         <input
           type={type}
           name={name}
