@@ -1,9 +1,5 @@
-// import { useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchContacts } from "redux/operations";
-// import css from './App.module.css'
-// import { selectToken } from "redux/selectors";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
 import PublicRoute from "./PublicRoute";
@@ -15,46 +11,36 @@ const Register = lazy(() => import("../pages/Register"));
 const Contacts = lazy(() => import("../pages/Contacts"));
 
 export function App () {
-  // const dispatch = useDispatch();
-  // const token = useSelector(selectToken)
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
-
   return (
+    <>
+     <ToastContainer 
+            autoClose={2000}
+            hideProgressBar={true}
+        />
+    
     <Routes>
-      <Route path="/" element={<SharedLayout/>}/>
+      <Route path="/" element={<SharedLayout/>}>
       
-      <Route path="/login" element={
-        <PublicRoute>
-          <Login/>
-      </PublicRoute>
-      } />
-      
-      <Route path="/register" element={
-        <PublicRoute>
-          <Register/>
-      </PublicRoute>
-      } />
+        <Route index element={
+          <PublicRoute>
+            <Login/>
+        </PublicRoute>
+        } />
+        
+        <Route path="/register" element={
+          <PublicRoute>
+            <Register/>
+        </PublicRoute>
+        } />
 
-      <Route path="/contacts" element={
-        <PrivateRoute>
-          <Contacts/>
-      </PrivateRoute>
-      } />
+        <Route path="/contacts" element={
+          <PrivateRoute>
+            <Contacts/>
+        </PrivateRoute>
+        } />
+      
+      </Route>
     </Routes>
-
-
-    // <div className={css.container}>
-    //    
-
-    //    {!token && <Register />}
-       
-
-    //    {token && 
-    //    <Contacts />
-    //    }
-    // </div>
+    </>
     )
 }

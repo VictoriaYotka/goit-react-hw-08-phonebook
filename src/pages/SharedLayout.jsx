@@ -14,8 +14,7 @@ const SharedLayout = () => {
           <Outlet />
       </Suspense>
       </main>
-    </>
-    
+    </>  
   )
 }
 
