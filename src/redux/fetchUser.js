@@ -30,9 +30,13 @@ async(userRegisterInfo, thunkAPI) => {
 
 export const fetchLogin = createAsyncThunk('user/loginUser',
 async(userLoginInfo, thunkAPI) => {
+  const state = thunkAPI.getState();
+  console.log(state)
+  console.log(userLoginInfo)
   try {
     const response = await userInstance.post("/login", userLoginInfo);
     setToken(response.data.token)
+    console.log(response.data)
     return response.data
     
   } catch (error) {
@@ -43,9 +47,10 @@ async(userLoginInfo, thunkAPI) => {
 export const fetchLogout = createAsyncThunk('user/logoutUser',
 async (_, thunkAPI) => {
   try {
-    const data = await userInstance.post('logout')
+    const response = await userInstance.post('logout')
     deleteToken()
-  return data
+    console.log(response)
+  return response
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -54,11 +59,12 @@ async (_, thunkAPI) => {
 export const fetchGetUser = createAsyncThunk('user/getUser',
 async(_, thunkAPI) => {
   const state = thunkAPI.getState();
+  console.log(state)
     setToken(state.user.token)
-  // const dispatch = useDispatch()
+
   try {
     const response = await userInstance('current')
-    // dispatch(fetchLogin(response.data))
+    console.log(response.data)
     fetchLogin(response.data)
   return response.data
   } catch (error) {

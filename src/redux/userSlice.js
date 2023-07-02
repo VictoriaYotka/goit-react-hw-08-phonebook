@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchLogin, fetchLogout } from "./fetchUser";
+import { fetchGetUser, fetchLogin, fetchLogout } from "./fetchUser";
 
 const initialState = {
     token: localStorage.getItem('token') ?? '',
@@ -13,15 +13,19 @@ const userSlice = createSlice({
         builder
         .addCase(fetchLogin.fulfilled, (state, {payload}) => {
             state.token = payload.token;
-            state.user = payload;
+            state.user = payload.user;
     })
     .addCase(fetchLogin.rejected, (state ) => {
         state.token = '';
-        state.email = ''
+        state.user = {}
     })
-    .addCase(fetchLogout.fulfilled, (state, {payload} ) => {
+    .addCase(fetchLogout.fulfilled, (state ) => {
         state.token = '';
-        state.user = '';
+        state.user = {};
+    })
+    .addCase(fetchGetUser.fulfilled, (state, {payload} ) => {
+        // state.token = '';
+        state.user = payload;
     })
 
 }})

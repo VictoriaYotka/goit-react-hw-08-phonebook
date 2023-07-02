@@ -26,12 +26,14 @@ export function ContactList() {
     <>
         {isLoading  && <p>Loading...</p>}
         {error && <p>{error}</p>}
-        {filteredContacts &&
+        {filteredContacts.length > 0 
+        ?
             <ul className={css.list}>
             {filteredContacts.map(({id, name, number}) => <li key={id} className={css.item}>{name}: {number}
             <button onClick={() => handleDeleteButton(id, name)} className={css.button}>Delete</button>
             </li>)}
         </ul>
+        : <p>You don't have contacts yet</p>
         }  
     </> 
     )}
