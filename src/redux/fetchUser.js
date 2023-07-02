@@ -9,13 +9,13 @@ const userInstance = axios.create({
 export const setToken = (token) => {
 	userInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   contactsInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  // localStorage.setItem('token', `Bearer ${token}`)
+  localStorage.setItem('token', token)
 }
 
 export const deleteToken = () => {
 	delete userInstance.defaults.headers.common['Authorization'];
   delete contactsInstance.defaults.headers.common['Authorization']
-  // localStorage.removeItem('token')
+  localStorage.removeItem('token')
 }
 
 export const fetchSignup = createAsyncThunk('user/createUser', 
@@ -51,12 +51,17 @@ async (_, thunkAPI) => {
   }
 })
 
-// export const fetchGetUser = createAsyncThunk('user/getUser',
-// async(_, thunkAPI) => {
-//   try {
-//     const data = await userInstance('current')
-//   return data
-//   } catch (error) {
-//     return thunkAPI.rejectWithValue(error.message);
-//   }
-// })
+export const fetchGetUser = createAsyncThunk('user/getUser',
+async(_, thunkAPI) => {
+  const state = thunkAPI.getState();
+    setToken(state.user.token)
+  // const dispatch = useDispatch()
+  try {
+    const response = await userInstance('current')
+    // dispatch(fetchLogin(response.data))
+    fetchLogin(response.data)
+  return response.data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+})

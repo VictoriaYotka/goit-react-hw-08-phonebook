@@ -14,4 +14,4 @@ export const selectError = state => state.contacts.error;
 
 export const selectToken = state => state.user.token;
 
-export const selectUserEmail = state => state.user.email;
+export const selectUserEmail = state => state.user.user.email;
