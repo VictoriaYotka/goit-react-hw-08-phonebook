@@ -2,7 +2,7 @@ import css from './ContactForm.module.css'
 import { toast } from "react-toastify";
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/fetchContacts';
 import {selectContacts } from 'redux/selectors';
 
 

@@ -1,20 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
+import { contactsInstance } from "./fetchContacts";
 
 const userInstance = axios.create({
   baseURL: 'https://connections-api.herokuapp.com/users'
 });
 
 export const setToken = (token) => {
-	userInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`
-  localStorage.setItem('token', `Bearer ${token}`)
+	userInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  contactsInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  // localStorage.setItem('token', `Bearer ${token}`)
 }
 
 export const deleteToken = () => {
-	delete userInstance.defaults.headers.common['Authorization']
-  localStorage.removeItem('token')
+	delete userInstance.defaults.headers.common['Authorization'];
+  delete contactsInstance.defaults.headers.common['Authorization']
+  // localStorage.removeItem('token')
 }
-
 
 export const fetchSignup = createAsyncThunk('user/createUser', 
 async(userRegisterInfo, thunkAPI) => {
@@ -49,12 +51,12 @@ async (_, thunkAPI) => {
   }
 })
 
-export const fetchGetUser = createAsyncThunk('user/getUser',
-async(_, thunkAPI) => {
-  try {
-    const data = await userInstance('current')
-  return data
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-})
+// export const fetchGetUser = createAsyncThunk('user/getUser',
+// async(_, thunkAPI) => {
+//   try {
+//     const data = await userInstance('current')
+//   return data
+//   } catch (error) {
+//     return thunkAPI.rejectWithValue(error.message);
+//   }
+// })

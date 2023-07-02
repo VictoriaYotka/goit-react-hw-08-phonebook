@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import css from './ContactList.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { fetchContacts } from 'redux/fetchContacts';
-import { deleteContact } from 'redux/operations';
+import { deleteContact, fetchContacts } from 'redux/fetchContacts';
 import { selectError, selectFilteredContacts, selectIsLoading,  } from 'redux/selectors';
 
 export function ContactList() {
@@ -29,7 +28,7 @@ export function ContactList() {
         {error && <p>{error}</p>}
         {filteredContacts &&
             <ul className={css.list}>
-            {filteredContacts.map(({id, name, phone}) => <li key={id} className={css.item}>{name}: {phone}
+            {filteredContacts.map(({id, name, number}) => <li key={id} className={css.item}>{name}: {number}
             <button onClick={() => handleDeleteButton(id, name)} className={css.button}>Delete</button>
             </li>)}
         </ul>

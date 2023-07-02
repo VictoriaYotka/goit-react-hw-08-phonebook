@@ -4,9 +4,9 @@ import { selectToken } from 'redux/selectors'
 
 const PrivateRoute = ({ children }) => {
 	const isAuth = useSelector(selectToken)
-	console.log(isAuth)
 	const location = useLocation()
-	return isAuth ? children : <Navigate to='/login' state={location} />
+	
+	return isAuth ? children : <Navigate to='/' state={location} />
 }
 
 export default PrivateRoute

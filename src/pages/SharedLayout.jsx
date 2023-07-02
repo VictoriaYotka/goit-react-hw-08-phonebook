@@ -10,10 +10,10 @@ const SharedLayout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-const handleLogoutClick = () => {
-  dispatch(fetchLogout());
-  navigate('/')
-} 
+  const handleLogoutClick = () => {
+    dispatch(fetchLogout());
+    navigate('/')
+  } 
 
   return (
     <>

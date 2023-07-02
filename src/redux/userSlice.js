@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchLogin } from "./fetchUser";
+import { fetchLogin, fetchLogout } from "./fetchUser";
 
 const initialState = {
     token: '',
@@ -18,7 +18,11 @@ const userSlice = createSlice({
     .addCase(fetchLogin.rejected, (state ) => {
         state.token = '';
         state.email = ''
-})
+    })
+    .addCase(fetchLogout.fulfilled, (state ) => {
+        state.token = '';
+        state.email = ''
+    })
 
 }})
   
