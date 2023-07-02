@@ -1,4 +1,3 @@
-import css from './ContactForm.module.css'
 import { toast } from "react-toastify";
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -31,10 +30,9 @@ export function ContactForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={css.form}>
-        <label htmlFor="name" className={css.label}>Name</label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
         <input
-          className={css.input}
           type="text"
           name="name"
           id="name"
@@ -43,9 +41,8 @@ export function ContactForm() {
           required
         />
 
-        <label htmlFor="phone" className={css.label}>Phone</label>
+        <label htmlFor="phone">Phone</label>
         <input
-          className={css.input}
           type="tel"
           name="phone"
           id="phone"
@@ -54,7 +51,7 @@ export function ContactForm() {
           required
         />
 
-        <button type="submit" className={css.button}>Add contact</button>
+        <button type="submit">Add contact</button>
       </form>
     </>
     )

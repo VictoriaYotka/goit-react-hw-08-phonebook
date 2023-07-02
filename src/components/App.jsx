@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { lazy, useEffect } from "react";
 import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
-import SharedLayout from "pages/SharedLayout";
+import SharedLayout from "pages/SharedLayout/SharedLayout";
 import { useDispatch } from "react-redux";
 import { fetchGetUser } from "redux/fetchUser";
 

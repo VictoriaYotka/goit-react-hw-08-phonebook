@@ -1,4 +1,3 @@
-import css from './Filter.module.css'
 import { useDispatch } from 'react-redux';
 import { filterContacts } from 'redux/filtersSlice';
 
@@ -11,9 +10,8 @@ export function Filter() {
     }
     return (
         <>
-        <label htmlFor="filter" className={css.label}>Find contacts by name:</label>
+        <label htmlFor="filter">Find contacts by name:</label>
         <input 
-        className={css.input}
         type="text"
         name="filter"
         id="filter"
