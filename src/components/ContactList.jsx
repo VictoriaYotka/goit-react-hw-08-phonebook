@@ -6,7 +6,7 @@ import { selectContacts, selectError, selectFilteredContacts, selectIsLoading,  
 import ContactListItem from 'components/ContactListItem';
 import { List, Text } from '@chakra-ui/react';
 
-export function ContactList() {
+export function ContactList({onOpen}) {
     const dispatch = useDispatch();
     const filteredContacts = useSelector(selectFilteredContacts);
     const contacts = useSelector(selectContacts);
@@ -36,6 +36,7 @@ export function ContactList() {
                 id={id}
                 name={name}
                 number={number}
+                onOpen={onOpen}
                 />)}
             </List>    
         }

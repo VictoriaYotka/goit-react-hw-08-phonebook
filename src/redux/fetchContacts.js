@@ -34,3 +34,14 @@ async (id, thunkAPI) => {
     return thunkAPI.rejectWithValue(e.message);
   }}
 )
+
+export const editContact = createAsyncThunk('contacts/editContact', 
+async (contact, thunkAPI) => {
+  const {id, name, number} = contact;
+    try {
+        const response = await contactsInstance.patch(`/contacts/${id}`, {name, number});
+        return response.data
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }}
+)

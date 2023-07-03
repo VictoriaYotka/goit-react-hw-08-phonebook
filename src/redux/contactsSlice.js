@@ -1,15 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./fetchContacts";
+import { fetchContacts, addContact, deleteContact, editContact } from "./fetchContacts";
 
 const initialState = {
     items: [],
     isLoading: false,
-    error: null,  
+    error: null, 
+    isModalOpen: false, 
+    currentContact: {}
 };
 
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
+    reducers: {
+        openModal(state, {payload}) {
+            state.isModalOpen = true;
+            state.currentContact = payload;
+        },
+        closeModal(state) {
+            state.isModalOpen = false;
+            state.currentContact = {}
+        }
+    },
     extraReducers: (builder) => {
         builder
       .addCase(fetchContacts.fulfilled, (state, {payload}) => {
@@ -29,6 +41,14 @@ const contactsSlice = createSlice({
                 contact => contact.id === payload.id);
             state.items.splice(index, 1);
         })
+        .addCase(editContact.fulfilled, (state, {payload}) => {
+            state.isLoading = false;
+            state.error = null;
+            state.isModalOpen = false;
+            const index = state.items.findIndex(
+                contact => contact.id === payload.id);
+            state.items.splice(index, 1, payload);
+        })
         .addCase(fetchContacts.pending, (state) => {
             state.isLoading = true;
             state.error = null
@@ -40,3 +60,4 @@ const contactsSlice = createSlice({
     }})
   
   export const contactsReducer = contactsSlice.reducer
+  export const {openModal, closeModal} = contactsSlice.actions

@@ -27,7 +27,7 @@ export function ContactForm() {
       .then(() => 
       toast.success(`${newName} successfully added!`))
       .catch(() => 
-        toast.error(`Something went wrong, ${newName} not added. Try again `))     
+        toast.error(`Something went wrong, ${newName} not added. Try again.`))     
     }
 
     form.reset()
