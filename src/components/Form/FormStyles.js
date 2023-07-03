@@ -4,5 +4,5 @@ textAlign: 'center'
 }
 
 export const btn = {
-    marginTop: '24px',
+    marginTop: '12px',
 }
