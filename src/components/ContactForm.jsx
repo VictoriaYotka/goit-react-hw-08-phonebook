@@ -2,9 +2,13 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/fetchContacts';
 import {selectContacts } from 'redux/selectors';
-import Form from "components/Form/Form";
-import FormInput from "components/FormInput/FormInput";
-import { input } from "./ContactFormStyles";
+import Form from "components/Form";
+import FormInput from "components/FormInput";
+
+const input = {
+  display: 'inline',
+  maxWidth: '320px',
+}
 
 export function ContactForm() {
   const contacts = useSelector(selectContacts)

@@ -1,5 +1,5 @@
-import Form from 'components/Form/Form';
-import FormInput from 'components/FormInput/FormInput'
+import Form from 'components/Form';
+import FormInput from 'components/FormInput'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
