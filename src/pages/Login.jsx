@@ -1,3 +1,4 @@
+import Form from 'components/Form/Form';
 import FormInput from 'components/FormInput/FormInput'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
@@ -5,8 +6,8 @@ import { toast } from 'react-toastify';
 import { fetchLogin } from 'redux/fetchUser';
 
 const Login = () => {
-const dispatch = useDispatch();
-const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,7 +29,10 @@ const navigate = useNavigate();
 }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form
+    handleSubmit={handleSubmit}
+        buttonText='Log In'>
+  
         <FormInput 
             type='email'
             name='email'
@@ -39,8 +43,7 @@ const navigate = useNavigate();
             name='password'
             label='Password'
         />
-        <button type="submit">Log In</button>
-    </form>
+    </Form>
   )
 }
 

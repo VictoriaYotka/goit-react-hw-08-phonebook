@@ -1,10 +1,11 @@
+import { FormLabel, Input } from '@chakra-ui/react'
 import React from 'react'
 
 const FormInput = ({type, name, label}) => {
   return (
     <>
-    <label htmlFor={name} >{label}</label>
-        <input
+    <FormLabel htmlFor={name} >{label}</FormLabel>
+        <Input
           type={type}
           name={name}
           id={name}

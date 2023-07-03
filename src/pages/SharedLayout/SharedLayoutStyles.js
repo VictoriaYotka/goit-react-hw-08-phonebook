@@ -1,11 +1,13 @@
 export const header = {
     display: 'flex',
     justifyContent: 'flex-end',
+    // flexWrap: 'wrap',
     gap: '48px',
     padding: '24px',
     marginBottom: '24px',
-    maxWidth: '100%',
-    borderBottom: '2px solid blue'  
+    maxWidth: '1200px',
+    borderBottom: '2px solid blue',
+    
 }
 
 export const title = {

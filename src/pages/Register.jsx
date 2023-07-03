@@ -1,3 +1,4 @@
+import Form from 'components/Form/Form';
 import FormInput from 'components/FormInput/FormInput';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -29,7 +30,10 @@ const handleSubmit = (event) => {
 }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <Form
+    handleSubmit={handleSubmit}
+        buttonText='Register'>
+
         <FormInput 
             type='text'
             name='user_name'
@@ -45,8 +49,7 @@ const handleSubmit = (event) => {
             name='password'
             label='Password'
         />
-        <button type="submit">Register</button>
-    </form>
+    </Form>
   )
 }
 

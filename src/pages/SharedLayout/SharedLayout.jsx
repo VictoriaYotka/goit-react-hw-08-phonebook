@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { fetchLogout } from 'redux/fetchUser'
 import { selectToken, selectUserEmail } from 'redux/selectors'
-import { badge, button, header, title } from './styles'
+import { badge, button, header, title } from './SharedLayoutStyles'
 
 
 
@@ -46,9 +46,11 @@ const SharedLayout = () => {
     </Container>
 
       <main>
+        <Container p='16px'>
         <Suspense fallback={<p>...Loading</p>}>
           <Outlet />
       </Suspense>
+      </Container>
       </main>
     </>  
   )
