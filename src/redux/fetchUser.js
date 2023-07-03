@@ -45,7 +45,7 @@ async (_, thunkAPI) => {
   try {
     const response = await userInstance.post('logout')
     deleteToken()
-  return response
+  return response.data
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

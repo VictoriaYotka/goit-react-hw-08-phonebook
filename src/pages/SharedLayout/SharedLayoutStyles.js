@@ -21,7 +21,6 @@ export const badge = {
 }
 
 export const button = {
-    borderRadius: '8px',
     color: 'white',
     backgroundColor:' blue.500',
   }

@@ -4,12 +4,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { deleteContact, fetchContacts } from 'redux/fetchContacts';
-import { selectError, selectFilteredContacts, selectIsLoading,  } from 'redux/selectors';
+import { selectContacts, selectError, selectFilteredContacts, selectIsLoading,  } from 'redux/selectors';
 import { icon, item, list } from './ContactListStyles';
 
 export function ContactList() {
     const dispatch = useDispatch();
     const filteredContacts = useSelector(selectFilteredContacts);
+    const contacts = useSelector(selectContacts);
     const isLoading = useSelector(selectIsLoading);
     const error = useSelector(selectError);
 
@@ -38,9 +39,11 @@ export function ContactList() {
                 </ListItem>)}
             </UnorderedList>    
         }
-        {!isLoading && !error && filteredContacts.length === 0 &&
-            <Text>You don't have contacts yet</Text> 
+        {!isLoading && !error && filteredContacts.length === 0 && contacts.length !== 0 &&
+            <Text>No matches found</Text> 
         }
-        
+        {!isLoading && !error && contacts.length === 0 &&
+            <Text>You don't have contacts yet</Text> 
+        }       
     </> 
     )}

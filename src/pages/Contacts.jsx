@@ -12,7 +12,7 @@ const Contacts = () => {
         
         <ContactForm/>
 
-        <Heading as='h3'>Contacts ({filteredContacts.length})</Heading>
+        <Heading as='h3' mb='16px'>Contacts ({filteredContacts.length})</Heading>
         <Filter/>
         <ContactList />
       </>

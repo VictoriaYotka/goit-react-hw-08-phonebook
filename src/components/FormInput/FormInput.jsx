@@ -1,10 +1,10 @@
-import { FormLabel, Input } from '@chakra-ui/react'
+import { Container, FormLabel, Input } from '@chakra-ui/react'
 import React from 'react'
 
 const FormInput = ({type, name, label, pattern, title, styles}) => {
   return (
-    <>
-    <FormLabel htmlFor={name}  sx={styles}>{label}</FormLabel>
+    <Container textAlign='start'>
+    <FormLabel htmlFor={name}  sx={styles} display='inline'>{label}</FormLabel>
         <Input
           sx={styles}
           mb='16px'
@@ -15,7 +15,7 @@ const FormInput = ({type, name, label, pattern, title, styles}) => {
           title={title}
           required
         />
-    </>
+    </Container>
   )
 }
 
