@@ -1,8 +1,11 @@
+import { DeleteIcon } from '@chakra-ui/icons';
+import { IconButton, ListItem, Text, UnorderedList } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { deleteContact, fetchContacts } from 'redux/fetchContacts';
 import { selectError, selectFilteredContacts, selectIsLoading,  } from 'redux/selectors';
+import { icon, item, list } from './ContactListStyles';
 
 export function ContactList() {
     const dispatch = useDispatch();
@@ -23,16 +26,21 @@ export function ContactList() {
 
     return (
     <>
-        {isLoading  && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-        {filteredContacts.length > 0 
-        ?
-            <ul>
-            {filteredContacts.map(({id, name, number}) => <li key={id}>{name}: {number}
-            <button onClick={() => handleDeleteButton(id, name)}>Delete</button>
-            </li>)}
-        </ul>
-        : <p>You don't have contacts yet</p>
-        }  
+        {isLoading  && <Text>Loading...</Text>}
+        {error && <Text>{error}</Text>}
+        {filteredContacts && 
+            <UnorderedList sx={list}>
+                {filteredContacts.map(({id, name, number}) => <ListItem key={id} sx={item}>{name}: {number}
+                <IconButton onClick={() => handleDeleteButton(id, name)} 
+                aria-label='Delete current item' icon={<DeleteIcon />} 
+                size='sm' variant='outline'
+                sx={icon}/>
+                </ListItem>)}
+            </UnorderedList>    
+        }
+        {!isLoading && !error && filteredContacts.length === 0 &&
+            <Text>You don't have contacts yet</Text> 
+        }
+        
     </> 
     )}

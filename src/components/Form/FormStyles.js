@@ -1,5 +1,6 @@
 export const form = {
-textAlign: 'center'
+textAlign: 'center',
+marginBottom: '16px'
 
 }
 

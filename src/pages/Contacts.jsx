@@ -3,6 +3,7 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 import { selectFilteredContacts } from 'redux/selectors';
 import { useSelector } from 'react-redux';
+import { Heading } from '@chakra-ui/react';
 
 const Contacts = () => {
     const filteredContacts = useSelector(selectFilteredContacts);
@@ -11,7 +12,7 @@ const Contacts = () => {
         
         <ContactForm/>
 
-        <h2>Contacts ({filteredContacts.length})</h2>
+        <Heading as='h3'>Contacts ({filteredContacts.length})</Heading>
         <Filter/>
         <ContactList />
       </>

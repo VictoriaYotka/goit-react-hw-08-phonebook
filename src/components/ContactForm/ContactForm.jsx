@@ -32,7 +32,7 @@ export function ContactForm() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit} buttonText='Add contact'>
+      <Form handleSubmit={handleSubmit} buttonText='Add contact'>
         <FormInput styles={input}
           type='text' name='name' label='Name'
           pattern="[a-zA-Z ]*"
@@ -44,26 +44,6 @@ export function ContactForm() {
           pattern="[0-9]+"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         />
-
-        {/* <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          pattern="[a-zA-Z ]*"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        /> */}
-
-        {/* <label htmlFor="phone">Phone</label>
-        <input
-          type="tel"
-          name="phone"
-          id="phone"
-          pattern="[0-9]+"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        /> */}
       </Form>
     </>
     )
