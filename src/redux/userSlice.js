@@ -23,6 +23,10 @@ const userSlice = createSlice({
         state.token = '';
         state.user = {};
     })
+    .addCase(fetchLogout.rejected, (state ) => {
+        state.token = '';
+        state.user = {};
+    })
     .addCase(fetchGetUser.fulfilled, (state, {payload} ) => {
         // state.token = '';
         state.user = payload;
