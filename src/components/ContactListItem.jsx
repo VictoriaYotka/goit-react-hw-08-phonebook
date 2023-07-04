@@ -1,7 +1,7 @@
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 import { IconButton, ListItem } from "@chakra-ui/react"
 import { useDispatch } from "react-redux"
-import { openModal } from "redux/contactsSlice";
+import { setCurrentContact } from "redux/contactsSlice";
 
 const ContactListItem = ({id, name, number, handleDeleteButton, onOpen}) => {
     
@@ -11,7 +11,7 @@ const ContactListItem = ({id, name, number, handleDeleteButton, onOpen}) => {
 
     const handleItemClick = (id, name, number) => {
         onOpen()
-        dispatch(openModal({id, name, number}))
+        dispatch(setCurrentContact({id, name, number}))
         
     }
 

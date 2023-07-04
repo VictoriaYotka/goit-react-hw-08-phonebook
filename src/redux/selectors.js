@@ -16,6 +16,6 @@ export const selectToken = state => state.user.token;
 
 export const selectUserEmail = state => state.user.user.email;
 
-export const selectIsModalOpen = state => state.contacts.isModalOpen;
+// export const selectIsModalOpen = state => state.contacts.isModalOpen;
 
 export const selectCurrentContact = state => state.contacts.currentContact;

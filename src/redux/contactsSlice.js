@@ -5,7 +5,6 @@ const initialState = {
     items: [],
     isLoading: false,
     error: null, 
-    isModalOpen: false, 
     currentContact: {}
 };
 
@@ -13,14 +12,9 @@ const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
     reducers: {
-        openModal(state, {payload}) {
-            state.isModalOpen = true;
+        setCurrentContact(state, {payload}) {
             state.currentContact = payload;
         },
-        closeModal(state) {
-            state.isModalOpen = false;
-            state.currentContact = {}
-        }
     },
     extraReducers: (builder) => {
         builder
@@ -60,4 +54,4 @@ const contactsSlice = createSlice({
     }})
   
   export const contactsReducer = contactsSlice.reducer
-  export const {openModal, closeModal} = contactsSlice.actions
+  export const {setCurrentContact} = contactsSlice.actions
