@@ -5,7 +5,8 @@ touch.
 
 ### Link
 
-Start using on [live page](https://victoriayotka.github.io/goit-markup-hw-08/)
+Start using on
+[live page](https://victoriayotka.github.io/goit-react-hw-08-phonebook)
 generated with github-pages environment. Link is also available in this repo's
 about section (at the top).
 
@@ -76,8 +77,8 @@ for every account and will never be lost or mixed up.
 ### [Setup](#setup)
 
 - download or clone the repository
-- run ```bash npm install````
-- run ```bash npm start````
+- run `bash npm install`
+- run `bash npm start`
 
 <a name="lisence"></a>
 
