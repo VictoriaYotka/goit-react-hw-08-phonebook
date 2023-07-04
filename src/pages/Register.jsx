@@ -21,7 +21,7 @@ const handleSubmit = (event) => {
     
     dispatch(fetchSignup(userRegisterInfo)).unwrap()
     .then(() => {
-        navigate('/')
+        navigate('/contacts')
         toast.success('Successfully registered. Please, log in')
     })
     .catch(() => toast.error(`Something went wrong, try again `))

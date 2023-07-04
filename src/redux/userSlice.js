@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchGetUser, fetchLogin, fetchLogout } from "./fetchUser";
+import { fetchGetUser, fetchLogin, fetchLogout, fetchSignup } from "./fetchUser";
 
 const initialState = {
     token: localStorage.getItem('token') ?? '',
@@ -11,26 +11,30 @@ const userSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder
+        .addCase(fetchSignup.fulfilled, (state, {payload}) => {
+            state.token = payload.token;
+            state.user = payload.user;
+        })
         .addCase(fetchLogin.fulfilled, (state, {payload}) => {
             state.token = payload.token;
             state.user = payload.user;
-    })
-    .addCase(fetchLogin.rejected, (state ) => {
-        state.token = '';
-        state.user = {}
-    })
-    .addCase(fetchLogout.fulfilled, (state ) => {
-        state.token = '';
-        state.user = {};
-    })
-    .addCase(fetchLogout.rejected, (state ) => {
-        state.token = '';
-        state.user = {};
-    })
-    .addCase(fetchGetUser.fulfilled, (state, {payload} ) => {
-        // state.token = '';
-        state.user = payload;
-    })
+        })
+        .addCase(fetchLogin.rejected, (state ) => {
+            state.token = '';
+            state.user = {}
+        })
+        .addCase(fetchLogout.fulfilled, (state ) => {
+            state.token = '';
+            state.user = {};
+        })
+        .addCase(fetchLogout.rejected, (state ) => {
+            state.token = '';
+            state.user = {};
+        })
+        .addCase(fetchGetUser.fulfilled, (state, {payload} ) => {
+            // state.token = '';
+            state.user = payload;
+        })
 
 }})
   
