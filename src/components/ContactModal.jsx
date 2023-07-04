@@ -48,14 +48,14 @@ const ContactModal = ({isOpen, onClose}) => {
             <FormControl as='form' onSubmit={handleSubmit} textAlign='center' mb='16px'>
                 <FormInput styles={input}
                     type='text' name='name' label='Name' value={name}
-                    pattern="[a-zA-Z ]*"
+                    pattern="^[\\sa-zA-Z'-]*$"
                     title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 />
 
                 <FormInput styles={input}
                     type='tel' name='phone' label='Phone' value={number}
-                    pattern="[0-9]+"
-                    title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                    pattern="[\+]\d{2}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}"
+                    title="Format: +38 (xxx) xxx-xx-xx"
                 />
                 <Button onClick={onClose} variant='ghost' mr={3}>
                     Go back

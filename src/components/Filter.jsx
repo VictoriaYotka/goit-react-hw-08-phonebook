@@ -11,7 +11,7 @@ export function Filter() {
     }
     return (
         <>
-        <FormLabel htmlFor="filter" display='inline' w='210px' mb='16px'>Find contacts by name:</FormLabel>
+        <FormLabel htmlFor="filter" display='inline' w='210px'>Find contacts by name:</FormLabel>
         <Input 
         display='inline'
         type="text"
