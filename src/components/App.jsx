@@ -6,7 +6,8 @@ import PublicRoute from "./PublicRoute";
 import PrivateRoute from "./PrivateRoute";
 import SharedLayout from "pages/SharedLayout";
 import { useDispatch } from "react-redux";
-import { fetchGetUser } from "redux/fetchUser";
+import { fetchGetUser, fetchLogout } from "redux/fetchUser";
+import { fetchContacts } from "redux/fetchContacts";
 
 const Login = lazy(() => import("../pages/Login"));
 const Register = lazy(() => import("../pages/Register"));
@@ -16,7 +17,9 @@ export function App () {
   const dispatch = useDispatch()
 
   useEffect(() => {
-   dispatch(fetchGetUser())
+   dispatch(fetchGetUser()).unwrap()
+   .then(() => dispatch(fetchContacts()))
+   .catch(() => dispatch(fetchLogout()))
   }, [dispatch])
   
   return (
