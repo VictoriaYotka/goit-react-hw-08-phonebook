@@ -1,10 +1,11 @@
-import { Badge, Button, Container, Flex, Heading, Icon, Text } from '@chakra-ui/react'
+import { Badge, Button, Container, Flex, Heading, Icon } from '@chakra-ui/react'
 import { AtSignIcon, ArrowForwardIcon } from '@chakra-ui/icons'
 import React, { Suspense } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { fetchLogout } from 'redux/fetchUser'
 import { selectToken, selectUserEmail } from 'redux/selectors'
+import Loader from 'components/Loader'
 
 const button = {
   color: 'white',
@@ -58,7 +59,7 @@ const SharedLayout = () => {
 
       <main>
         <Container p='16px'>
-        <Suspense fallback={<Text>...Loading</Text>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
       </Suspense>
       </Container>

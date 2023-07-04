@@ -12,7 +12,6 @@ const Contacts = () => {
 
   return (
     <>
-        {/* {isModalOpen && <ContactModal />} */}
         <ContactModal isOpen={isOpen} onClose={onClose} />
         <ContactForm/>
         <Heading as='h3' mb='16px'>Contacts ({filteredContacts.length})</Heading>

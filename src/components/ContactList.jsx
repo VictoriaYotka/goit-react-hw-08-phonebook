@@ -5,6 +5,7 @@ import { deleteContact, fetchContacts } from 'redux/fetchContacts';
 import { selectContacts, selectError, selectFilteredContacts, selectIsLoading,  } from 'redux/selectors';
 import ContactListItem from 'components/ContactListItem';
 import { List, Text } from '@chakra-ui/react';
+import Loader from './Loader';
 
 export function ContactList({onOpen}) {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export function ContactList({onOpen}) {
 
     return (
     <>
-        {isLoading  && <Text>Loading...</Text>}
+        {isLoading  && <Loader />}
         {error && <Text>{error}</Text>}
         {filteredContacts && 
             <List>
