@@ -77,8 +77,8 @@ for every account and will never be lost or mixed up.
 ### [Setup](#setup)
 
 - download or clone the repository
-- run `bash npm install`
-- run `bash npm start`
+- run `npm install`
+- run `npm start`
 
 <a name="lisence"></a>
 
